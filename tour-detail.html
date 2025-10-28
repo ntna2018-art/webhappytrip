@@ -112,8 +112,8 @@
       bottom: 20px;
       left: 20px;
       z-index: 2000;
-      background: linear-gradient(90deg,#3eaf7e,#5af362);
-      color:rgb(255, 255, 255);
+      background: linear-gradient(90deg, #3eaf7e, #5af362);
+      color: rgb(255, 255, 255);
     }
 
 
@@ -258,7 +258,7 @@
   </main>
 
   <footer class="bg-dark text-white py-3 mt-5">
-     <div class="container text-center">
+    <div class="container text-center">
       <p class="mb-1"> HappyTrip <i class="bi bi-emoji-laughing-fill"></i></p>
       <p class="small mb-0">Email: happytrip@gmail.com • Phone: 0355 447 122</p>
     </div>
@@ -444,25 +444,25 @@
     }
 
     function dienThongTinModal(cd) {
-  tenChuyenDiModal.value = cd.ten;
-  giaNguoiLonModal.innerText = formatVND(cd.giaNguoiLonNum);
-  const giaTre = Math.round(cd.giaNguoiLonNum * (1 - cd.phanTramGiamTreEm / 100));
-  giaTreEmModal.innerText = formatVND(giaTre);
-  document.getElementById('gioiHanTuoi').innerText = cd.gioiHanTuoi;
+      tenChuyenDiModal.value = cd.ten;
+      giaNguoiLonModal.innerText = formatVND(cd.giaNguoiLonNum);
+      const giaTre = Math.round(cd.giaNguoiLonNum * (1 - cd.phanTramGiamTreEm / 100));
+      giaTreEmModal.innerText = formatVND(giaTre);
+      document.getElementById('gioiHanTuoi').innerText = cd.gioiHanTuoi;
 
-  const today = new Date();
-  today.setDate(today.getDate() + 1);
-  const yyyy = today.getFullYear();
-  const mm = String(today.getMonth() + 1).padStart(2, '0');
-  const dd = String(today.getDate()).padStart(2, '0');
-  const minDate = `${yyyy}-${mm}-${dd}`;
-  ngayKhoiHanhEl.min = minDate;
+      const today = new Date();
+      today.setDate(today.getDate() + 3);
+      const yyyy = today.getFullYear();
+      const mm = String(today.getMonth() + 1).padStart(2, '0');
+      const dd = String(today.getDate()).padStart(2, '0');
+      const minDate = `${yyyy}-${mm}-${dd}`;
+      ngayKhoiHanhEl.min = minDate;
 
-  soNguoiLonEl.value = 1;
-  soTreEmEl.value = 0;
-  ngayKhoiHanhEl.value = '';
-  capNhatTong();
-}
+      soNguoiLonEl.value = 1;
+      soTreEmEl.value = 0;
+      ngayKhoiHanhEl.value = '';
+      capNhatTong();
+    }
 
 
     document.getElementById('moDat').addEventListener('click', () => dienThongTinModal(getChuyenDiHienTai()));
@@ -491,9 +491,36 @@
         ngay: ngayKhoiHanhEl.value,
         nguoiLon: Number(soNguoiLonEl.value),
         treEm: Number(soTreEmEl.value),
-        hoTen: hoTenEl.value.t1)
+        hoTen: hoTenEl.value.trim(),
+        soDienThoai: soDienThoaiEl.value.trim(),
+        tong: (Number(soNguoiLonEl.value) * cd.giaNguoiLonNum) + (Number(soTreEmEl.value) * Math.round(cd.giaNguoiLonNum * (1 - cd.phanTramGiamTreEm / 100)))
+      };
+      if (!booking.ngay || !booking.hoTen || !booking.soDienThoai) { alert('Vui lòng nhập đầy đủ thông tin.'); return; }
+      const bs = bootstrap.Modal.getInstance(document.getElementById('modalDat'));
+      bs.hide();
+      alert('Đặt tour thành công! Chúng tôi sẽ liên hệ lại sớm.\n\nChi tiết:\n' + booking.ma + ' • ' + booking.ngay + ' • ' + booking.nguoiLon + ' người lớn, ' + booking.treEm + ' trẻ em\nTổng: ' + formatVND(booking.tong));
+      console.log('ĐẶT TOUR', booking);
+      formDat.reset(); capNhatTong();
+    });
+    function quayLaiDanhSach() {
+      history.replaceState(null, '', 'tour-detail.html');
+      hienDanhSachChuyenDi();
+
+      giaBenPhaiEl.innerText = '-';
+      maChuongTrinhEl.innerText = 'Mã chương trình: -';
+    }
+
+  </script>
+  <script src="main.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script>
+    flatpickr("#ngayKhoiHanh", {
+      dateFormat: "d/m/Y",
+      minDate: new Date().fp_incr(1)
     });
   </script>
+
 </body>
 
 </html>

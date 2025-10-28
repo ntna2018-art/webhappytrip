@@ -41,13 +41,11 @@ footer {
   width: 100%
 }
 
-/* 🌞 Light Mode (default) */
 body {
   background-color: #ffffff;
   color: #000000;
 }
 
-/* Các thẻ nội dung */
 .card,
 .tour-card,
 .info-box,
@@ -57,13 +55,11 @@ body {
   color: #000000;
 }
 
-/* Navbar Light */
 .navbar {
   background-color: #ffffff !important;
   color: #000000;
 }
 
-/* 🎯 Dark Mode */
 body.dark {
   --bg: #0c3c1e;
   --text: #e6eef8;
@@ -74,7 +70,6 @@ body.dark {
   color: #eee;
 }
 
-/* Navbar */
 body.dark .navbar {
   background: rgba(8, 40, 17, 0.92) !important;
   backdrop-filter: blur(10px);
@@ -92,7 +87,6 @@ body.dark .navbar-nav .nav-link.active {
   text-shadow: 0 0 6px rgba(78, 255, 172, 0.5);
 }
 
-/* Card + Box */
 body.dark .card,
 body.dark .tour-card,
 body.dark .info-box,
@@ -106,25 +100,20 @@ body.dark #chat-box {
 body.dark #chat-box>div:first-child,
 body.dark .chat-box>div:first-child {
   background: #2a2a2a !important;
-  /* đổi nền tối */
   color: #ffffff !important;
-  /* chữ sáng rõ */
   border-bottom: 1px solid #2f7d69;
 }
 
-/* Meta text */
 body.dark .small,
 body.dark .text-muted {
   color: #cccccc !important;
 }
 
-/* Sidebar card header */
 body.dark .card h3 {
   background: #009936 !important;
   color: #fff !important;
 }
 
-/* Button toggle */
 body.dark #theme-toggle {
   background: #84dd99;
   color: #fff;
@@ -149,13 +138,11 @@ body.dark {
   color: #f1f1f1 !important;
 }
 
-/* Những phần nền sáng */
 body.dark .bg-light,
 body.dark .bg-white {
   background-color: #1e1e1e !important;
 }
 
-/* Text mờ thành text sáng rõ */
 body.dark .text-muted,
 body.dark p,
 body.dark h5,
@@ -164,7 +151,6 @@ body.dark h6 {
   color: #faf5f5 !important;
 }
 
-/* Icon màu xanh vẫn giữ nguyên */
 body.dark i {
   color: #4caf50 !important;
 }
@@ -174,7 +160,6 @@ body.dark .navbar-toggler {
 body.dark .navbar-toggler-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
 }
-/* Modal trong Dark Mode */
 body.dark .modal-content {
   background: #222 !important;
   color: #fff !important;
@@ -207,24 +192,39 @@ body.dark .form-control {
   color: #fff !important;
 }
 
-/* Placeholder cũng phải sáng lên */
 body.dark .form-control::placeholder {
   color: #bfbfbf !important;
 }
 
-/* icon */
 body.dark .btn-close {
   filter: invert(1);
 }
 
-/* Giá tiền hiện rõ */
 body.dark .text-muted {
   color: #ccc !important;
 }
+.flatpickr-calendar {
+  background: #fff !important;
+  color: #000 !important;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2) !important;
+  border: 1px solid #ccc !important;
+}
+
+.flatpickr-day {
+  color: #000 !important;
+}
+
+.flatpickr-day.today {
+  background: #e0e0e0 !important;
+  color: #000 !important;
+}
+
+.flatpickr-day.selected {
+  background: #007bff !important;
+  color: #fff !important;
+}
 
 
-
-/* Responsive */
 @media (max-width:767px) {
   .hero {
     padding: 40px 0
@@ -235,7 +235,6 @@ body.dark .text-muted {
   }
 }
 
-/*Card Hover */
 .card {
   transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
   border: 1px solid rgba(0, 0, 0, 0.08);
@@ -247,7 +246,6 @@ body.dark .text-muted {
   border-color: var(--primary);
 }
 
-/* Button modern */
 .btn {
   transition: background .3s ease, transform .3s ease;
 }
@@ -256,8 +254,6 @@ body.dark .text-muted {
   transform: translateY(-2px);
 }
 
-
-/* HERO */
 .hero-slide {
   height: 100vh;
   background-size: cover;
@@ -293,7 +289,6 @@ body.dark .text-muted {
   }
 }
 
-/* BACKGROUND IMAGES */
 .hero-dalat {
   background-image: url('img/dalat (2).jpg');
 }
@@ -306,7 +301,6 @@ body.dark .text-muted {
   background-image: url('img/hue.jpg');
 }
 
-/* Chat animation */
 #chat-btn {
   animation: pulseChat 2.5s infinite;
 }
@@ -388,9 +382,6 @@ body.dark .text-muted {
 }
 
 
-
-
-/* PRELOADER  */
 #preloader {
   position: fixed;
   top: 0;
@@ -435,7 +426,6 @@ body.dark .text-muted {
   transition: opacity .9s ease;
 }
 
-/* Ưu điểm HappyTrip */
 .adv-item i {
   font-size: 2.6rem;
   color: #16b85c;

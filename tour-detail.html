@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chi tiết Tour - HappyTrip</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+  <style>
+    :root {
+      --success: #41a541;
+    }
+
+    body {
+      background: var(--bg, #f5faf7);
+    }
+
+    .container-main {
+      width: 90%;
+      margin: 28px auto;
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .tour-card {
+      background: #fff;
+      padding: 22px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+      flex: 3;
+    }
+
+    .sidebar {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .thumb {
+      width: 100%;
+      border-radius: 10px;
+      object-fit: cover;
+      max-height: 320px;
+    }
+
+    .price-large {
+      color: #c62828;
+      font-weight: 700;
+      font-size: 28px;
+    }
+
+    .meta {
+      color: var(--muted, #6c757d);
+      font-size: 14px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .info-box {
+      background: #fff;
+      padding: 14px;
+      border-radius: 10px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
+    }
+
+    .timeline {
+      margin-top: 18px;
+      border-left: 2px solid #eef2f6;
+      padding-left: 18px;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 18px;
+      padding-left: 18px;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -11px;
+      top: 2px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #fff;
+      border: 2px solid var(--success);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .timeline-item i {
+      position: absolute;
+      left: -16px;
+      top: 0;
+      color: var(--success);
+      font-size: 1rem;
+    }
+
+    #btnBack {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      z-index: 2000;
+      background: linear-gradient(90deg,#3eaf7e,#5af362);
+      color:rgb(255, 255, 255);
+    }
+
+
+    @media (max-width:991px) {
+      .container-main {
+        flex-direction: column;
+      }
+
+      .info-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+        <img src="img/logo.jpg" alt="Logo" width="40" height="40" class="rounded-circle">
+        <span class="brand-name">HappyTrip</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Trang chủ</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">Giới thiệu</a></li>
+          <li class="nav-item"><a class="nav-link" href="tour-detail.html">Tour</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Liên hệ</a></li>
+        </ul>
+        <div class="d-flex ms-3">
+          <button id="theme-toggle" class="btn btn-outline-secondary btn-sm">Dark</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <div class="container-main">
+
+      <div id="mainContent" class="tour-card"></div>
+
+      <aside class="sidebar">
+        <div class="card">
+          <h3 class="mb-0 p-2" style="background:var(--success);color:#fff;font-size:16px">Giá từ</h3>
+          <div class="card-body">
+            <div class="price-large" id="giaBenPhai">-</div>
+            <div class="meta mb-2" id="maChuongTrinh">Mã chương trình: -</div>
+
+            <button id="moDat" class="btn btn-success w-100 mb-2" data-bs-toggle="modal" data-bs-target="#modalDat">
+              <i class="bi bi-calendar-event"></i> Chọn ngày khởi hành
+            </button>
+
+            <button id="nutDat" class="btn btn-outline-success w-100" data-bs-toggle="modal" data-bs-target="#modalDat">
+              <i class="bi bi-cart-check"></i> Đặt tour ngay
+
+            </button>
+          </div>
+        </div>
+
+
+        <div class="card">
+          <h3 class="mb-0 p-2" style="background:var(--success);color:#fff;font-size:16px">Liên hệ tư vấn</h3>
+          <div class="card-body">
+            <p class="mb-1"><i class="bi bi-telephone"></i> Hotline: 0355 447 122</p>
+            <p class="mb-0"><i class="bi bi-envelope"></i> Email: happytrip@gmail.com</p>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+
+    <!-- Modal đặt tour -->
+    <div class="modal fade" id="modalDat" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-md modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Đặt tour</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+          </div>
+          <div class="modal-body">
+            <form id="formDat">
+              <div class="mb-3">
+                <label class="form-label">Tour</label>
+                <input type="text" id="tenChuyenDiModal" class="form-control" readonly>
+              </div>
+
+              <div class="row g-2">
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">Ngày khởi hành</label>
+                  <input type="date" id="ngayKhoiHanh" class="form-control" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">Số người (người lớn)</label>
+                  <input type="number" id="soNguoiLon" class="form-control" min="0" max="10" value="0" required>
+                </div>
+              </div>
+
+              <div class="row g-2">
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">Số trẻ em (&lt;<span id="gioiHanTuoi">10</span> tuổi)</label>
+                  <input type="number" id="soTreEm" class="form-control" min="0" max="10" value="0" required>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Họ và tên</label>
+                <input type="text" id="hoTen" class="form-control" placeholder="Nguyễn Văn A" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Số điện thoại</label>
+                <input type="tel" id="soDienThoai" class="form-control" placeholder="09xxxxxxxx" maxlength="10"
+                  required>
+              </div>
+
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <div>
+                  <div class="small text-muted">Giá người lớn</div>
+                  <div id="giaNguoiLonModal" class="fw-bold"></div>
+                  <div class="small text-muted">Giá trẻ em (<span id="phanTramGiam">40</span>% giảm)</div>
+                  <div id="giaTreEmModal" class="fw-bold"></div>
+                </div>
+                <div class="text-end">
+                  <div class="small text-muted">Tổng tiền</div>
+                  <div id="tongTienModal" class="fw-bold fs-5 text-danger"></div>
+                </div>
+              </div>
+
+              <div class="mt-3 d-grid">
+                <button type="submit" class="btn btn-success">Xác nhận đặt</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="bg-dark text-white py-3 mt-5">
+     <div class="container text-center">
+      <p class="mb-1"> HappyTrip <i class="bi bi-emoji-laughing-fill"></i></p>
+      <p class="small mb-0">Email: happytrip@gmail.com • Phone: 0355 447 122</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const dsChuyenDi = {
+      "TL-01": {
+        ma: "TL-01", ten: "Đà Lạt 3N2Đ - Thành phố ngàn hoa", giaNguoiLonText: "3.890.000đ", giaNguoiLonNum: 3890000, phanTramGiamTreEm: 40, gioiHanTuoi: 10, duration: "3 ngày 2 đêm", phuongTien: "Xe giường nằm", anh: "img/dalat.jpg", diemDen: "Nhà thờ Con Gà, Quảng trường Lâm Viên, Vườn hoa", amThuc: "Lẩu gà lá é, bánh căn", doiTuong: "Gia đình, cặp đôi", timeSuggest: "Quanh năm", khuyenMai: "Giảm 5% khi đặt trước 15 ngày", lichTrinh: [
+          { ngay: 1, noidung: ["Khởi hành từ TP. HCM – đến Đà Lạt", "Tham quan Quảng trường Lâm Viên", "Dạo chợ đêm, thử đặc sản địa phương"] },
+          { ngay: 2, noidung: ["Vườn hoa Thành phố", "Tham quan Đồi chè Cầu Đất", "Buổi tối tự do khám phá"] },
+          { ngay: 3, noidung: ["Check-out, mua đặc sản", "Khởi hành về TP. HCM"] }
+        ]
+      },
+
+      "NT-01": {
+        ma: "NT-01", ten: "Nha Trang 3N2Đ - Thiên đường biển", giaNguoiLonText: "4.990.000đ", giaNguoiLonNum: 4990000, phanTramGiamTreEm: 40, gioiHanTuoi: 10, duration: "3 ngày 2 đêm", phuongTien: "Xe du lịch + Cano", anh: "img/nhatrang.jpg", diemDen: "VinWonders, Hòn Mun, Bãi Dài", amThuc: "Hải sản tươi sống", doiTuong: "Gia đình, team building", timeSuggest: "Tháng 2 - Tháng 8", khuyenMai: "Miễn phí lặn ngắm san hô", lichTrinh: [
+          { ngay: 1, noidung: ["Khởi hành, nhận phòng", "Tham quan VinWonders"] },
+          { ngay: 2, noidung: ["Cano ra đảo Hòn Mun", "Ngắm san hô (tùy chọn lặn) "] },
+          { ngay: 3, noidung: ["Tham quan Chợ Đầm, về TP. HCM"] }]
+      },
+
+      "PQ-01": {
+        ma: "PQ-01", ten: "Phú Quốc 4N3Đ - Hòn ngọc phương Nam", giaNguoiLonText: "6.490.000đ", giaNguoiLonNum: 6490000, phanTramGiamTreEm: 40, gioiHanTuoi: 10, duration: "4 ngày 3 đêm", phuongTien: "Máy bay + Cano", anh: "img/phuquoc6.jpg", diemDen: "Grand World, Bãi Sao, Hòn Thơm", amThuc: "Buffet, BBQ hải sản", doiTuong: "Gia đình, cặp đôi", timeSuggest: "Tháng 10 - Tháng 4", khuyenMai: "Tặng vé xem show biển", lichTrinh: [
+          { ngay: 1, noidung: ["Đến Phú Quốc, nhận phòng", "Tham quan chợ đêm Dinh Cậu"] },
+          { ngay: 2, noidung: ["Grand World, VinWonders Phú Quốc"] },
+          { ngay: 3, noidung: ["Cano ra Hòn Thơm", "BBQ trên bãi biển"] },
+          { ngay: 4, noidung: ["Mua đặc sản, về lại TP. HCM"] }]
+      },
+
+      "DN-01": {
+        ma: "DN-01", ten: "Đà Nẵng - Hội An 3N2Đ", giaNguoiLonText: "5.100.000đ", giaNguoiLonNum: 5100000, phanTramGiamTreEm: 40, gioiHanTuoi: 10, duration: "3 ngày 2 đêm", phuongTien: "Máy bay", anh: "img/danang.jpg", diemDen: "Bà Nà Hills, Cầu Rồng, Phố cổ Hội An", amThuc: "Mì Quảng, Cao Lầu", doiTuong: "Gia đình, cặp đôi", timeSuggest: "Quanh năm", khuyenMai: "Miễn phí tham quan Bà Nà (tuỳ đợt)", lichTrinh: [
+          { ngay: 1, noidung: ["Đến Đà Nẵng, nhận phòng", "Tham quan Cầu Rồng, đi dạo bãi biển Mỹ Khê"] },
+          { ngay: 2, noidung: ["Bà Nà Hills - Khu vui chơi, check-in"] },
+          { ngay: 3, noidung: ["Hội An - Phố cổ, thả đèn hoa đăng (tuỳ mùa)"] }]
+      },
+
+      "SP-01": {
+        ma: "SP-01", ten: "Sa Pa 3N2Đ - Trải nghiệm núi rừng", giaNguoiLonText: "3.450.000đ", giaNguoiLonNum: 3450000, phanTramGiamTreEm: 40, gioiHanTuoi: 10, duration: "3 ngày 2 đêm", phuongTien: "Xe giường nằm", anh: "img/sapa3.jpg", diemDen: "Fansipan, Cát Cát, bản Tả Van", amThuc: "Thịt trâu gác bếp, thắng cố", doiTuong: "Gia đình, phượt", timeSuggest: "Tháng 9 - Tháng 4", khuyenMai: "Giảm giá mùa thấp điểm", lichTrinh: [
+          { ngay: 1, noidung: ["Khởi hành, nhận phòng", "Khám phá chợ đêm Sa Pa"] },
+          { ngay: 2, noidung: ["Cáp treo lên Fansipan", "Tham quan bản Cát Cát"] },
+          { ngay: 3, noidung: ["Tản bộ, mua đồ đặc sản, trở về"] }]
+      },
+
+      "HG-01": {
+        ma: "HG-01", ten: "Hà Giang 4N3Đ - Vùng cao kỳ vĩ", giaNguoiLonText: "4.800.000đ", giaNguoiLonNum: 4800000, phanTramGiamTreEm: 40, gioiHanTuoi: 10, duration: "4 ngày 3 đêm", phuongTien: "Xe du lịch", anh: "img/hagiang.jpg", diemDen: "Đèo Mã Pí Lèng, Đồng Văn, Lũng Cú", amThuc: "Thắng cố, thắng dẩy", doiTuong: "Phượt, khám phá", timeSuggest: "Tháng 3 - Tháng 10", khuyenMai: "Giảm giá đoàn lớn", lichTrinh: [
+          { ngay: 1, noidung: ["Khởi hành, dừng chân tại Làng Văn Hóa"] },
+          { ngay: 2, noidung: ["Đồng Văn - Phố cổ, cao nguyên đá"] },
+          { ngay: 3, noidung: ["Mã Pí Lèng, chinh phục đèo"] },
+          { ngay: 4, noidung: ["Trở về, kết thúc hành trình"] }]
+      },
+
+      "HU-01": {
+        ma: "HU-01", ten: "Huế - Cố đô 3N2Đ", giaNguoiLonText: "2.990.000đ", giaNguoiLonNum: 2990000, phanTramGiamTreEm: 40, gioiHanTuoi: 10, duration: "3 ngày 2 đêm", phuongTien: "Xe du lịch", anh: "img/hue.jpg", diemDen: "Kinh thành Huế, chùa Thiên Mụ, lăng Tự Đức", amThuc: "Cơm hến, bún bò Huế", doiTuong: "Gia đình, người lớn tuổi", timeSuggest: "Tháng 2 - Tháng 9", khuyenMai: "Ưu đãi nhóm", lichTrinh: [
+          { ngay: 1, noidung: ["Tham quan Kinh thành Huế", "Dạo sông Hương buổi tối"] },
+          { ngay: 2, noidung: ["Lăng Tự Đức, lăng Minh Mạng"] },
+          { ngay: 3, noidung: ["Chợ Đông Ba, mua sắm - kết thúc"] }]
+      },
+
+      "HL-01": {
+        ma: "HL-01", ten: "Hạ Long 2N1Đ - Kỳ quan vịnh biển", giaNguoiLonText: "2.450.000đ", giaNguoiLonNum: 2450000, phanTramGiamTreEm: 40, gioiHanTuoi: 10, duration: "2 ngày 1 đêm", phuongTien: "Xe + Tàu", anh: "img/halong3.jpg", diemDen: "Vịnh Hạ Long, Hang Sửng Sốt", amThuc: "Hải sản tươi sống", doiTuong: "Gia đình, khách đoàn", timeSuggest: "Quanh năm", khuyenMai: "Giảm cho đoàn lớn", lichTrinh: [
+          { ngay: 1, noidung: ["Khởi hành - Check-in tàu", "Tham quan Hang Sửng Sốt"] },
+          { ngay: 2, noidung: ["Sunset trên vịnh, về đất liền"] }]
+      }
+    };
+    let maChuyenDi = new URLSearchParams(window.location.search).get('id');
+
+    const mainEl = document.getElementById('mainContent');
+    const giaBenPhaiEl = document.getElementById('giaBenPhai');
+    const maChuongTrinhEl = document.getElementById('maChuongTrinh');
+
+    function formatVND(n) { return n.toLocaleString('vi-VN') + ' đ'; }
+
+    function hienChiTietChuyenDi(cd) {
+      document.title = cd.ten + ' | HappyTrip';
+      document.getElementById('phanTramGiam').innerText = cd.phanTramGiamTreEm;
+      document.getElementById('gioiHanTuoi').innerText = cd.gioiHanTuoi;
+
+      let lichHtml = '';
+      cd.lichTrinh.forEach(ch => {
+        lichHtml += `<div class="timeline-item"><i class="bi bi-calendar-event"></i><div><strong>Ngày ${ch.ngay}</strong>`;
+        ch.noidung.forEach(p => { lichHtml += `<div class="small text-muted">• ${p}</div>`; });
+        lichHtml += `</div></div>`;
+      });
+
+      mainEl.innerHTML = `
+    <div class="d-flex gap-3 align-items-start flex-wrap">
+      <img class="thumb" src="${cd.anh}" alt="${cd.ten}" style="width:420px;max-height:320px;">
+      <div style="flex:1;min-width:260px;">
+        <h2 style="color:var(--success)">${cd.ten}</h2>
+        <button id="btnBack" class="btn btn-outline-secondary btn-sm mb-3" onclick="quayLaiDanhSach()">
+  ← Quay lại
+</button>
+
+        <div class="meta mb-2"><strong>Mã:</strong> ${cd.ma} • <strong>Thời gian:</strong> ${cd.duration}</div>
+        <div class="price-large">${cd.giaNguoiLonText}</div>
+        <p class="mt-2"><i class="bi bi-geo-alt-fill"></i> <strong>Phương tiện:</strong> ${cd.phuongTien}</p>
+        <p class="mt-2">${cd.diemDen}</p>
+
+        <div class="info-grid">
+          <div class="info-box"><div class="fw-bold">Điểm tham quan</div><div class="small text-muted mt-1">${cd.diemDen}</div></div>
+          <div class="info-box"><div class="fw-bold">Ẩm thực</div><div class="small text-muted mt-1">${cd.amThuc}</div></div>
+          <div class="info-box"><div class="fw-bold">Đối tượng</div><div class="small text-muted mt-1">${cd.doiTuong}</div></div>
+          <div class="info-box"><div class="fw-bold">Thời gian lý tưởng</div><div class="small text-muted mt-1">${cd.timeSuggest}</div></div>
+          <div class="info-box"><div class="fw-bold">Phương tiện</div><div class="small text-muted mt-1">${cd.phuongTien}</div></div>
+          <div class="info-box"><div class="fw-bold">Khuyến mãi</div><div class="small text-muted mt-1">${cd.khuyenMai}</div></div>
+        </div>
+
+        <div class="section mt-4">
+          <h5 style="color:var(--success);border-left:4px solid var(--primary);padding-left:8px;">Lịch trình chi tiết</h5>
+          <div class="timeline">${lichHtml}</div>
+        </div>
+      </div>
+    </div>
+  `;
+
+      giaBenPhaiEl.innerText = cd.giaNguoiLonText;
+      maChuongTrinhEl.innerText = 'Mã chương trình: ' + cd.ma;
+    }
+
+    function hienDanhSachChuyenDi() {
+      document.title = 'Danh sách chuyến đi | HappyTrip';
+      mainEl.innerHTML = `<h3>Danh sách chuyến đi</h3><div class="row g-3" id="danhSach"></div>`;
+      const el = document.getElementById('danhSach');
+      for (const k in dsChuyenDi) {
+        const cd = dsChuyenDi[k];
+        const col = document.createElement('div');
+        col.className = 'col-12 col-md-6 mb-3';
+        col.innerHTML = `
+      <div class="card h-100">
+        <img src="${cd.anh}" class="card-img-top" alt="${cd.ten}">
+        <div class="card-body">
+          <h5 class="card-title">${cd.ten}</h5>
+          <p class="card-text small text-muted">${cd.diemDen}</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="fw-bold text-danger">${cd.giaNguoiLonText}</div>
+            <div>
+              <a href="?id=${k}" class="btn btn-outline-success btn-sm">Chi tiết</a>
+              <button class="btn btn-success btn-sm ms-1" onclick="moDatNhanh('${k}')">Đặt</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+        el.appendChild(col);
+      }
+    }
+
+    if (maChuyenDi && dsChuyenDi[maChuyenDi]) {
+      hienChiTietChuyenDi(dsChuyenDi[maChuyenDi]);
+    } else {
+      hienDanhSachChuyenDi();
+      giaBenPhaiEl.innerText = '-';
+      maChuongTrinhEl.innerText = 'Mã chương trình: -';
+    }
+
+    const formDat = document.getElementById('formDat');
+    const tenChuyenDiModal = document.getElementById('tenChuyenDiModal');
+    const giaNguoiLonModal = document.getElementById('giaNguoiLonModal');
+    const giaTreEmModal = document.getElementById('giaTreEmModal');
+    const tongTienModal = document.getElementById('tongTienModal');
+    const soNguoiLonEl = document.getElementById('soNguoiLon');
+    const soTreEmEl = document.getElementById('soTreEm');
+    const ngayKhoiHanhEl = document.getElementById('ngayKhoiHanh');
+    const hoTenEl = document.getElementById('hoTen');
+    const soDienThoaiEl = document.getElementById('soDienThoai');
+
+    function moDatNhanh(ma) {
+      maChuyenDi = ma;
+      history.replaceState(null, '', '?id=' + ma);
+      hienChiTietChuyenDi(dsChuyenDi[ma]);
+      const modal = new bootstrap.Modal(document.getElementById('modalDat'));
+      dienThongTinModal(dsChuyenDi[ma]);
+      modal.show();
+    }
+
+    function getChuyenDiHienTai() {
+      if (maChuyenDi && dsChuyenDi[maChuyenDi]) return dsChuyenDi[maChuyenDi];
+      const ten = document.querySelector('#mainContent h2')?.innerText;
+      for (const k in dsChuyenDi) if (dsChuyenDi[k].ten === ten) return dsChuyenDi[k];
+      return Object.values(dsChuyenDi)[0];
+    }
+
+    function dienThongTinModal(cd) {
+  tenChuyenDiModal.value = cd.ten;
+  giaNguoiLonModal.innerText = formatVND(cd.giaNguoiLonNum);
+  const giaTre = Math.round(cd.giaNguoiLonNum * (1 - cd.phanTramGiamTreEm / 100));
+  giaTreEmModal.innerText = formatVND(giaTre);
+  document.getElementById('gioiHanTuoi').innerText = cd.gioiHanTuoi;
+
+  const today = new Date();
+  today.setDate(today.getDate() + 3);
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const dd = String(today.getDate()).padStart(2, '0');
+  const minDate = `${yyyy}-${mm}-${dd}`;
+  ngayKhoiHanhEl.min = minDate;
+
+  soNguoiLonEl.value = 1;
+  soTreEmEl.value = 0;
+  ngayKhoiHanhEl.value = '';
+  capNhatTong();
+}
+
+
+    document.getElementById('moDat').addEventListener('click', () => dienThongTinModal(getChuyenDiHienTai()));
+    document.getElementById('nutDat').addEventListener('click', () => dienThongTinModal(getChuyenDiHienTai()));
+
+    soNguoiLonEl.addEventListener('input', capNhatTong);
+    soTreEmEl.addEventListener('input', capNhatTong);
+
+    soDienThoaiEl.addEventListener('input', function () { this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10); });
+
+    function capNhatTong() {
+      const cd = getChuyenDiHienTai();
+      const adults = Math.max(0, Math.min(10, Number(soNguoiLonEl.value || 0)));
+      const children = Math.max(0, Math.min(10, Number(soTreEmEl.value || 0)));
+      const childPrice = Math.round(cd.giaNguoiLonNum * (1 - cd.phanTramGiamTreEm / 100));
+      const total = adults * cd.giaNguoiLonNum + children * childPrice;
+      tongTienModal.innerText = formatVND(total);
+    }
+
+    formDat.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const cd = getChuyenDiHienTai();
+      const booking = {
+        ma: cd.ma,
+        ten: cd.ten,
+        ngay: ngayKhoiHanhEl.value,
+        nguoiLon: Number(soNguoiLonEl.value),
+        treEm: Number(soTreEmEl.value),
+        hoTen: hoTenEl.value.trim(),
+        soDienThoai: soDienThoaiEl.value.trim(),
+        tong: (Number(soNguoiLonEl.value) * cd.giaNguoiLonNum) + (Number(soTreEmEl.value) * Math.round(cd.giaNguoiLonNum * (1 - cd.phanTramGiamTreEm / 100)))
+      };
+      if (!booking.ngay || !booking.hoTen || !booking.soDienThoai) { alert('Vui lòng nhập đầy đủ thông tin.'); return; }
+      const bs = bootstrap.Modal.getInstance(document.getElementById('modalDat'));
+      bs.hide();
+      alert('Đặt tour thành công! Chúng tôi sẽ liên hệ lại sớm.\n\nChi tiết:\n' + booking.ma + ' • ' + booking.ngay + ' • ' + booking.nguoiLon + ' người lớn, ' + booking.treEm + ' trẻ em\nTổng: ' + formatVND(booking.tong));
+      console.log('ĐẶT TOUR', booking);
+      formDat.reset(); capNhatTong();
+    });
+    function quayLaiDanhSach() {
+      history.replaceState(null, '', 'tour-detail.html');
+      hienDanhSachChuyenDi();
+
+      giaBenPhaiEl.innerText = '-';
+      maChuongTrinhEl.innerText = 'Mã chương trình: -';
+    }
+
+
+  </script>
+  <script src="main.js"></script>
+</body>
+
+</html>

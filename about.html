@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Giới thiệu - HappyTrip</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+   <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm;fw-bold mb-4 text-primary">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+        <img src="img/logo.jpg" alt="Logo" width="40" height="40" class="rounded-circle">
+        <span class="brand-name">HappyTrip</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Trang chủ</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">Giới thiệu</a></li>
+          <li class="nav-item"><a class="nav-link" href="tour-detail.html">Tour</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Liên hệ</a></li>
+        </ul>
+        <div class="d-flex ms-3">
+          <button id="theme-toggle" class="btn btn-outline-secondary btn-sm">Dark</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+
+  <section class="about-banner position-relative;fw-bold mb-4 text-primary">
+    <img src="img\HappyTrips.png" class="w-100 banner-img" alt="HappyTrip">
+    <div class="banner-overlay"></div>
+    <div class="banner-text text-center text-white">
+    </div>
+  </section>
+
+  <section class="py-5 text-center">
+    <div class="container">
+      <h2 class="fw-bold mb-4 text-success">Câu chuyện của chúng tôi</h2>
+      <p class="text" data-aos="fade-up">
+        HappyTrip được sáng lập tại Đà Lạt – thành phố của hoa và hạnh phúc.  
+        Chúng tôi tin rằng mỗi chuyến đi là một hành trình cảm xúc,  
+        nơi bạn khám phá cảnh đẹp, con người và chính bản thân mình.
+      </p>
+    </div>
+  </section>
+
+  <section class="bg-light py-5">
+    <div class="container">
+      <div class="row text-center g-4">
+        <div class="col-md-4" data-aos="zoom-in">
+          <div class="p-4 bg-white rounded shadow-sm h-100">
+            <i class="bi bi-bullseye text-success display-5 mb-3"></i>
+            <h5 class="fw-bold">Sứ mệnh</h5>
+            <p>Truyền cảm hứng du lịch và mang lại niềm vui bền vững cho mọi người.</p>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
+          <div class="p-4 bg-white rounded shadow-sm h-100">
+            <i class="bi bi-eye text-success display-5 mb-3"></i>
+            <h5 class="fw-bold">Tầm nhìn</h5>
+            <p>Trở thành đơn vị du lịch hàng đầu về trải nghiệm thực tế tại Việt Nam.</p>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+          <div class="p-4 bg-white rounded shadow-sm h-100">
+            <i class="bi bi-heart text-success display-5 mb-3"></i>
+            <h5 class="fw-bold">Giá trị cốt lõi</h5>
+            <p>Tận tâm – Uy tín – Sáng tạo – Kết nối cảm xúc con người.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="py-5 text-center">
+    <div class="container">
+      <h2 class="fw-bold mb-4 text-success">Những con số biết nói</h2>
+      <div class="row g-4">
+        <div class="col-md-3">
+          <h1 class="text-success fw-bold counter" data-target="10">0</h1>
+          <p class="small text-muted" id="solieu">Năm kinh nghiệm</p>
+        </div>
+        <div class="col-md-3">
+          <h1 class="text-success fw-bold counter" data-target="150">0</h1>
+          <p class="small text-muted" id="solieu">Tour đã tổ chức</p>
+        </div>
+        <div class="col-md-3">
+          <h1 class="text-success fw-bold counter" data-target="4800">0</h1>
+          <p class="small text-muted" id="solieu">Khách hàng hài lòng</p>
+        </div>
+        <div class="col-md-3">
+          <h1 class="text-success fw-bold counter" data-target="24">0</h1>
+          <p class="small text-muted" id="solieu">Hỗ trợ 24/7</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-light py-5">
+    <div class="container">
+      <h2 class="fw-bold mb-5 text-center text-success">Đội ngũ hướng dẫn viên</h2>
+      <div class="row g-4 text-center">
+        <div class="col-md-3" data-aos="fade-up">
+          <img src="img/ngocanh.jpg" class="rounded-circle mb-3 shadow" width="120" height="120">
+          <h6>Ngọc Ánh</h6><p class="small text-muted">Trưởng nhóm hướng dẫn</p>
+          <div>
+            <a href="#" class="text-success me-2"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="text-success"><i class="bi bi-instagram"></i></a>
+          </div>
+        </div>
+        <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+          <img src="https://scontent.fsgn21-1.fna.fbcdn.net/v/t39.30808-6/507214427_1025064636373612_15800555974694733_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeHsM6CuDx6eK09jt_ni-9crZT2cKHmPHQVlPZwoeY8dBeCFwyPRYd9KC1eljs80Y0IEVv_PffYi9CuVIdiLyGQJ&_nc_ohc=9cyThCQbhysQ7kNvwFv0AX4&_nc_oc=AdnB-8kKFxZSvsJjDMfS3aEm1anTODfr5V2SRiwlLstWrHZtnl3lcVbBIma2rtRqlHPtKAT81JXQI-igQmMf6IVR&_nc_zt=23&_nc_ht=scontent.fsgn21-1.fna&_nc_gid=X6qxaUyd2fwikCiWJ2A2Kg&oh=00_AffRvWl4dX33lKX09Z3ItpbsWYBR1V6LT8FawKjLqVDbVA&oe=6902E3D6" class="rounded-circle mb-3 shadow" width="120" height="120">
+          <h6>Hương Giang</h6><p class="small text-muted">Hướng dẫn viên Tour</p>
+          <div>
+            <a href="#" class="text-success me-2"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="text-success"><i class="bi bi-instagram"></i></a>
+          </div>
+        </div>
+        <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+          <img src="img/khanhnhi.jpg" class="rounded-circle mb-3 shadow" width="120" height="120">
+          <h6>Khánh Nhi</h6><p class="small text-muted">Chuyên viên trải nghiệm</p>
+          <div>
+            <a href="#" class="text-success me-2"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="text-success"><i class="bi bi-instagram"></i></a>
+          </div>
+        </div>
+        <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+          <img src="img/phuc.jpg" class="rounded-circle mb-3 shadow" width="120" height="120">
+          <h6>Trọng Phúc</h6><p class="small text-muted">Điều phối tour</p>
+          <div>
+            <a href="#" class="text-success me-2"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="text-success"><i class="bi bi-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="py-5 text-center">
+  <div class="container">
+    <h2 class="fw-bold mb-4 text-success">Khách hàng nói gì?</h2>
+
+    <div id="reviewCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+
+        <div class="carousel-item active">
+          <blockquote class="blockquote">
+            <p>“HappyTrip làm chuyến đi của chúng tôi trở nên đáng nhớ hơn bao giờ hết!”</p>
+            <footer class="blockquote-footer">Chị Hòa, Hà Nội</footer>
+          </blockquote>
+        </div>
+
+        <div class="carousel-item">
+          <blockquote class="blockquote">
+            <p>“Dịch vụ chuyên nghiệp, hướng dẫn viên vui tính và tận tâm.”</p>
+            <footer class="blockquote-footer">Anh Tuấn, TP.HCM</footer>
+          </blockquote>
+        </div>
+
+        <div class="carousel-item">
+          <blockquote class="blockquote">
+            <p>“Chuyến đi tuyệt vời, phong cảnh và trải nghiệm đều 10/10!”</p>
+            <footer class="blockquote-footer">Gia đình Mai Anh</footer>
+          </blockquote>
+        </div>
+
+      </div>
+
+      <button class="carousel-control-prev" type="button" data-bs-target="#reviewCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bg-success rounded-circle p-3" aria-hidden="true"></span>
+        <span class="visually-hidden">Trước</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#reviewCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon bg-success rounded-circle p-3" aria-hidden="true"></span>
+        <span class="visually-hidden">Tiếp</span>
+      </button>
+
+    </div>
+  </div>
+</section>
+
+
+  <section class="bg-success text-white text-center py-5">
+    <div class="container">
+      <h2 class="fw-bold mb-3">Sẵn sàng cho chuyến đi tiếp theo?</h2>
+      <p class="mb-4">Liên hệ ngay để nhận tư vấn và ưu đãi đặc biệt từ HappyTrip!</p>
+      <a href="contact.html" class="btn btn-light btn-lg">Liên hệ ngay</a>
+    </div>
+  </section>
+
+
+  <footer class="text-center text-white py-4 mt-5">
+    <div class="container">
+      <p class="mb-1"> HappyTrip <i class="bi bi-emoji-laughing-fill"></i></p>
+      <p class="small mb-0">Email: happytrip@gmail.com • Phone: 0355 447 122</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+  <script src="main.js"></script>
+  <script>
+    AOS.init();
+    document.querySelectorAll('.counter').forEach(counter => {
+      const update = () => {
+        const target = +counter.getAttribute('data-target');
+        const count = +counter.innerText;
+        const inc = target / 10;
+        if(count < target){
+          counter.innerText = Math.ceil(count + inc);
+          setTimeout(update, 100);
+        } else counter.innerText = target;
+      };
+      update();
+    });
+  </script>
+</body>
+</html>

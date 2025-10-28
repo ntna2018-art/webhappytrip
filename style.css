@@ -1,0 +1,456 @@
+:root {
+  --primary: #3ed04a;
+  --bg: #ffffff;
+  --text: #222;
+  --muted: #6c757d;
+
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  color: var(--text);
+  background: var(--bg);
+}
+
+.navbar-brand .brand-name {
+  font-weight: 600
+}
+
+.hero {
+  background: linear-gradient(180deg, rgba(4, 48, 4, 0.074), rgba(4, 55, 7, 0.094));
+  padding: 60px 0
+}
+
+.site-header {
+  background: transparent
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+  background: #f5f5f5
+}
+
+footer {
+  position: relative;
+  bottom: 0;
+  width: 100%
+}
+
+/* 🌞 Light Mode (default) */
+body {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* Các thẻ nội dung */
+.card,
+.tour-card,
+.info-box,
+.chat-box,
+#chat-box {
+  background: #ffffff;
+  color: #000000;
+}
+
+/* Navbar Light */
+.navbar {
+  background-color: #ffffff !important;
+  color: #000000;
+}
+
+/* 🎯 Dark Mode */
+body.dark {
+  --bg: #0c3c1e;
+  --text: #e6eef8;
+  --muted: #eceef1;
+  --primary: #f3f5f7;
+
+  background-color: #045119;
+  color: #eee;
+}
+
+/* Navbar */
+body.dark .navbar {
+  background: rgba(8, 40, 17, 0.92) !important;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+body.dark .navbar-brand,
+body.dark .navbar-nav .nav-link {
+  color: #eaf2ff !important;
+}
+
+body.dark .navbar-nav .nav-link:hover,
+body.dark .navbar-nav .nav-link.active {
+  color: #45fe86 !important;
+  text-shadow: 0 0 6px rgba(78, 255, 172, 0.5);
+}
+
+/* Card + Box */
+body.dark .card,
+body.dark .tour-card,
+body.dark .info-box,
+body.dark .chat-box,
+body.dark #chat-box {
+  background: #0b3419 !important;
+  color: #ffffff !important;
+  border: 1px solid #1a4b28;
+}
+
+body.dark #chat-box>div:first-child,
+body.dark .chat-box>div:first-child {
+  background: #2a2a2a !important;
+  /* đổi nền tối */
+  color: #ffffff !important;
+  /* chữ sáng rõ */
+  border-bottom: 1px solid #2f7d69;
+}
+
+/* Meta text */
+body.dark .small,
+body.dark .text-muted {
+  color: #cccccc !important;
+}
+
+/* Sidebar card header */
+body.dark .card h3 {
+  background: #009936 !important;
+  color: #fff !important;
+}
+
+/* Button toggle */
+body.dark #theme-toggle {
+  background: #84dd99;
+  color: #fff;
+  border: none;
+  box-shadow: 0 2px 8px rgba(78, 255, 131, 0.3);
+}
+
+body.dark #floating-cta {
+  background: #84dd99;
+  color: #fff;
+  border: none;
+  box-shadow: 0 2px 8px rgba(78, 255, 131, 0.3);
+}
+
+body.dark #theme-toggle:hover {
+  background: #47ab45;
+  color: #051022;
+}
+
+body.dark {
+  background: #121212 !important;
+  color: #f1f1f1 !important;
+}
+
+/* Những phần nền sáng */
+body.dark .bg-light,
+body.dark .bg-white {
+  background-color: #1e1e1e !important;
+}
+
+/* Text mờ thành text sáng rõ */
+body.dark .text-muted,
+body.dark p,
+body.dark h5,
+body.dark h2,
+body.dark h6 {
+  color: #faf5f5 !important;
+}
+
+/* Icon màu xanh vẫn giữ nguyên */
+body.dark i {
+  color: #4caf50 !important;
+}
+body.dark .navbar-toggler {
+  border-color: #e6d2d2 !important;
+}
+body.dark .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
+}
+/* Modal trong Dark Mode */
+body.dark .modal-content {
+  background: #222 !important;
+  color: #fff !important;
+}
+
+body.dark .modal-header,
+body.dark .modal-body,
+body.dark .modal-footer {
+  background: #222 !important;
+  color: #fff !important;
+}
+
+body.dark .modal-title {
+  color: #fff !important;
+}
+
+body.dark .form-label,
+body.dark label,
+body.dark textarea,
+body.dark select {
+  color: #fff !important;
+}
+body.dark input{
+  color: #0b0a0a !important;
+}
+
+body.dark .form-control {
+  background: #333 !important;
+  border-color: #555 !important;
+  color: #fff !important;
+}
+
+/* Placeholder cũng phải sáng lên */
+body.dark .form-control::placeholder {
+  color: #bfbfbf !important;
+}
+
+/* icon */
+body.dark .btn-close {
+  filter: invert(1);
+}
+
+/* Giá tiền hiện rõ */
+body.dark .text-muted {
+  color: #ccc !important;
+}
+
+
+
+/* Responsive */
+@media (max-width:767px) {
+  .hero {
+    padding: 40px 0
+  }
+
+  .card-img-top {
+    height: 180px
+  }
+}
+
+/*Card Hover */
+.card {
+  transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  border-color: var(--primary);
+}
+
+/* Button modern */
+.btn {
+  transition: background .3s ease, transform .3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+
+/* HERO */
+.hero-slide {
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.overlay-dark {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.slide-content {
+  position: absolute;
+  bottom: 14%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  animation: fadeUpHero 1s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeUpHero {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 20%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+/* BACKGROUND IMAGES */
+.hero-dalat {
+  background-image: url('img/dalat (2).jpg');
+}
+
+.hero-nhatrang {
+  background-image: url('img/nhatrang (2).jpg');
+}
+
+.hero-phuquoc {
+  background-image: url('img/hue.jpg');
+}
+
+/* Chat animation */
+#chat-btn {
+  animation: pulseChat 2.5s infinite;
+}
+
+@keyframes pulseChat {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(0, 102, 204, 0.0);
+  }
+
+  50% {
+    transform: scale(1.08);
+    box-shadow: 0 0 18px rgba(0, 204, 85, 0.35);
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(0, 102, 204, 0.0);
+  }
+}
+
+#floating-cta {
+  position: fixed;
+  right: 20px;
+  bottom: 90px;
+  background: var(--primary);
+  color: #fff;
+  padding: 14px 20px;
+  border-radius: 40px;
+  font-weight: 600;
+  box-shadow: 0 8px 26px rgba(0, 204, 88, 0.35);
+  z-index: 999;
+  animation: pulseCta 2.5s infinite;
+  transition: transform .3s ease;
+  text-decoration: none;
+}
+
+#floating-cta:hover {
+  transform: translateY(-3px);
+}
+
+@keyframes pulseCta {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.08);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+#reviews .shadow-sm {
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+#reviews .shadow-sm:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+}
+
+.avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.review-card {
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.review-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+}
+
+
+
+
+/* PRELOADER  */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
+  overflow: hidden;
+}
+
+.plane-zoom {
+  width: 80px;
+  opacity: 0;
+  transform: translateY(200px) scale(0.3);
+  animation: planeZoomIn 2.2s forwards ease-in;
+}
+
+@keyframes planeZoomIn {
+  0% {
+    opacity: 0;
+    transform: translateY(200px) scale(0.3);
+  }
+
+  40% {
+    opacity: 1;
+    transform: translateY(200px) scale(0.6);
+  }
+
+  100% {
+    transform: translateY(-10vh) scale(15);
+    opacity: 0;
+  }
+}
+
+#preloader.fade-out {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .9s ease;
+}
+
+/* Ưu điểm HappyTrip */
+.adv-item i {
+  font-size: 2.6rem;
+  color: #16b85c;
+}
+
+
+#map {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#map iframe {
+  width: 90%;
+  height: 200px;
+  border: 0;
+  border-radius: 12px;
+}
